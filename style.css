@@ -1,0 +1,346 @@
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --secondary: #eef2ff;
+  --background: #f4f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #dbe3ee;
+  --success: #0f9d58;
+  --success-soft: #e8f6ee;
+  --error: #d93025;
+  --error-soft: #fdecea;
+  --shadow: 0 18px 45px rgba(79, 70, 229, 0.12);
+  --weak: #ef4444;
+  --medium: #f59e0b;
+  --strong: #22c55e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #eef4ff 0%, #f9fafb 100%);
+  color: var(--text);
+}
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+}
+
+.registration-card {
+  width: min(100%, 1000px);
+  background: var(--card);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(219, 227, 238, 0.8);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.brand-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary), #7c3aed);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.3);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  color: var(--text);
+}
+
+.card-header p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.form-section {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.form-section h2 {
+  margin: 0 0 18px;
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9aa4b2;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.field.invalid input,
+.field.invalid select,
+.field.invalid textarea,
+#genderField.invalid {
+  border-color: var(--error);
+  background: var(--error-soft);
+  box-shadow: 0 0 0 4px rgba(217, 48, 37, 0.06);
+}
+
+.field.valid input,
+.field.valid select,
+.field.valid textarea,
+#genderField.valid {
+  border-color: var(--success);
+  background: var(--success-soft);
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 110px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.radio-option input {
+  width: auto;
+  accent-color: var(--primary);
+}
+
+.error-message {
+  min-height: 18px;
+  font-size: 0.8rem;
+  color: var(--error);
+  line-height: 1.4;
+}
+
+.field.valid .error-message {
+  color: var(--success);
+}
+
+.strength-wrapper {
+  margin-top: 2px;
+}
+
+.strength-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.strength-bar {
+  height: 10px;
+  background: #edf2f7;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.strength-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.strength-fill.weak {
+  width: 35%;
+  background: var(--weak);
+}
+
+.strength-fill.medium {
+  width: 70%;
+  background: var(--medium);
+}
+
+.strength-fill.strong {
+  width: 100%;
+  background: var(--strong);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0 0;
+}
+
+.checkbox-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+  margin-top: 2px;
+}
+
+.checkbox-row label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.confirmation-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-status {
+  display: none;
+  margin-top: 22px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.form-status.visible {
+  display: block;
+}
+
+.form-status.success {
+  background: var(--success-soft);
+  color: var(--success);
+  border: 1px solid rgba(15, 157, 88, 0.2);
+}
+
+.form-status.error {
+  background: var(--error-soft);
+  color: var(--error);
+  border: 1px solid rgba(217, 48, 37, 0.2);
+}
+
+.button-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.btn {
+  flex: 1;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), #7c3aed);
+  color: #fff;
+  box-shadow: 0 12px 20px rgba(79, 70, 229, 0.25);
+}
+
+.btn-secondary {
+  background: #eef2ff;
+  color: var(--primary-dark);
+}
+
+@media (max-width: 768px) {
+  .registration-card {
+    padding: 24px 18px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+}

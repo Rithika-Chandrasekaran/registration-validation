@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart User Registration & Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="registration-card" aria-labelledby="form-title">
+        <div class="card-header">
+          <div class="brand-badge">✓</div>
+          <div>
+            <h1 id="form-title">Create Your Account</h1>
+            <p>Register your details securely and validate your information before submission.</p>
+          </div>
+        </div>
+
+        <form id="registrationForm" novalidate>
+          <section class="form-section">
+            <h2>Personal Information</h2>
+            <div class="form-grid">
+              <div class="field">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
+                <span class="error-message" aria-live="polite"></span>
+              </div>
+
+              <div class="field">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required />
+                <span class="error-message" aria-live="polite"></span>
+              </div>
+
+              <div class="field full-width">
+                <label>Gender</label>
+                <div id="genderField" class="radio-group">
+                  <label class="radio-option">
+                    <input type="radio" name="gender" value="Male" />
+                    <span>Male</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="gender" value="Female" />
+                    <span>Female</span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="gender" value="Other" />
+                    <span>Other</span>
+                  </label>
+                </div>
+                <span class="error-message" aria-live="polite"></span>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Account Information</h2>
+            <div class="form-grid">
+              <div class="field">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="example@gmail.com" required />
+                <span class="error-message" aria-live="polite"></span>
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter 10-digit mobile number" maxlength="10" required />
+                <span class="error-message" aria-live="polite"></span>
+              </div>
+
+              <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a strong password" required />
+                <span class="error-message" aria-live="polite"></span>
+
+                <div class="strength-wrapper" aria-live="polite">
+                  <div class="strength-labels">
+                    <span>Password Strength</span>
+                    <span id="strengthText">Weak</span>
+                  </div>
+                  <div class="strength-bar">
+                    <div id="strengthFill" class="strength-fill weak"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required />
+                <span class="error-message" aria-live="polite"></span>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <h2>Address Information</h2>
+            <div class="form-grid">
+              <div class="field full-width">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="3" placeholder="House number, street, area" required></textarea>
+                <span class="error-message" aria-live="polite"></span>
+              </div>
+
+              <div class="field">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Enter city name" required />
+                <span class="error-message" aria-live="polite"></span>
+              </div>
+
+              <div class="field">
+                <label for="state">State</label>
+                <select id="state" name="state" required>
+                  <option value="">Select your state</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Other">Other</option>
+                </select>
+                <span class="error-message" aria-live="polite"></span>
+              </div>
+
+              <div class="field">
+                <label for="pinCode">PIN Code</label>
+                <input type="text" id="pinCode" name="pinCode" placeholder="6-digit PIN code" maxlength="6" required />
+                <span class="error-message" aria-live="polite"></span>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-section confirmation-section">
+            <div class="checkbox-row">
+              <input type="checkbox" id="terms" name="terms" />
+              <label for="terms">I agree to the Terms and Conditions and privacy policy.</label>
+            </div>
+            <span id="termsError" class="error-message" aria-live="polite"></span>
+          </section>
+
+          <div id="submitMessage" class="form-status" aria-live="polite"></div>
+
+          <div class="button-row">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="reset" class="btn btn-secondary" id="resetBtn">Reset</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
